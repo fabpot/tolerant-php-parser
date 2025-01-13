@@ -3045,7 +3045,8 @@ class Parser {
             $expression instanceof SubscriptExpression ||
             $expression instanceof ScopedPropertyAccessExpression ||
             $expression instanceof StringLiteral ||
-            $expression instanceof ArrayCreationExpression
+            $expression instanceof ArrayCreationExpression ||
+            $expression instanceof ObjectCreationExpression
         )) {
             return $expression;
         }
@@ -3199,6 +3200,16 @@ class Parser {
         return $subscriptExpression;
     }
 
+    private function parseNewObjectNoParenthesisMemberAccessExpression($expression):MemberAccessExpression {
+        $memberAccessExpression = new MemberAccessExpression();
+        $memberAccessExpression->parent = $expression;
+
+        $memberAccessExpression->dereferencableExpression = $expression;
+        $memberAccessExpression->arrowToken = $this->eat(TokenKind::ArrowToken, TokenKind::QuestionArrowToken);
+        $memberAccessExpression->memberName = $this->parseMemberName($memberAccessExpression);
+
+        return $memberAccessExpression;
+    }
     private function parseMemberAccessExpression($expression):MemberAccessExpression {
         $memberAccessExpression = new MemberAccessExpression();
         $memberAccessExpression->parent = $expression->parent;
@@ -3285,6 +3296,11 @@ class Parser {
 
         if ($this->getCurrentToken()->kind === TokenKind::OpenBraceToken) {
             $objectCreationExpression->classMembers = $this->parseClassMembers($objectCreationExpression);
+        }
+
+        // PHP8.4 new with no parenthesis
+        if ($this->getCurrentToken()->kind === TokenKind::ArrowToken) {
+            return $this->parsePostfixExpressionRest($objectCreationExpression);
         }
 
         return $objectCreationExpression;
