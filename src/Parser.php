@@ -3200,16 +3200,6 @@ class Parser {
         return $subscriptExpression;
     }
 
-    private function parseNewObjectNoParenthesisMemberAccessExpression($expression):MemberAccessExpression {
-        $memberAccessExpression = new MemberAccessExpression();
-        $memberAccessExpression->parent = $expression;
-
-        $memberAccessExpression->dereferencableExpression = $expression;
-        $memberAccessExpression->arrowToken = $this->eat(TokenKind::ArrowToken, TokenKind::QuestionArrowToken);
-        $memberAccessExpression->memberName = $this->parseMemberName($memberAccessExpression);
-
-        return $memberAccessExpression;
-    }
     private function parseMemberAccessExpression($expression):MemberAccessExpression {
         $memberAccessExpression = new MemberAccessExpression();
         $memberAccessExpression->parent = $expression->parent;
