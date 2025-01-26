@@ -175,7 +175,7 @@ class Parser {
      * @param string $fileContents
      * @return SourceFileNode
      */
-    public function parseSourceFile(string $fileContents, string $uri = null) : SourceFileNode {
+    public function parseSourceFile(string $fileContents, ?string $uri = null) : SourceFileNode {
         $this->lexer = $this->makeLexer($fileContents);
 
         $this->reset();
