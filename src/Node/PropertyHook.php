@@ -6,11 +6,12 @@
 
 namespace Microsoft\PhpParser\Node;
 
+use Microsoft\PhpParser\FunctionLike;
 use Microsoft\PhpParser\Node;
 use Microsoft\PhpParser\Node\Statement\CompoundStatementNode;
 use Microsoft\PhpParser\Token;
 
-class PropertyHook extends Node {
+class PropertyHook extends Node implements FunctionLike {
     /** @var AttributeGroup[]|null */
     public $attributes;
     /** @var Token */
