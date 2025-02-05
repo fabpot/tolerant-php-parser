@@ -341,11 +341,11 @@ abstract class Node implements \JsonSerializable {
      * Gets string representing Node text (not including leading comment + whitespace trivia)
      * @return string
      */
-    public function getText() : string {
+    public function getText(?string $fileContents= null) : string {
         $start = $this->getStartPosition();
         $end = $this->getEndPosition();
 
-        $fileContents = $this->getFileContents();
+        $fileContents = $fileContents ?? $this->getFileContents();
         return \substr($fileContents, $start, $end - $start);
     }
 
