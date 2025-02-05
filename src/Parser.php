@@ -2192,6 +2192,7 @@ class Parser {
             // the original operator, and the newly constructed exponentiation-expression as the operand.
             $shouldOperatorTakePrecedenceOverUnary = false;
             switch ($token->kind) {
+                case TokenKind::OpenBraceToken:
                 case TokenKind::AsteriskAsteriskToken:
                     $shouldOperatorTakePrecedenceOverUnary = $leftOperand instanceof UnaryExpression;
                     break;
@@ -3056,6 +3057,9 @@ class Parser {
         )) {
             return $expression;
         }
+        if ($tokenKind === TokenKind::OpenBraceToken) {
+            return $expression;
+        }
         if ($tokenKind === TokenKind::ColonColonToken) {
             $expression = $this->parseScopedPropertyAccessExpression($expression, null);
             return $this->parsePostfixExpressionRest($expression);
@@ -3462,7 +3466,7 @@ class Parser {
         return $this->parseDelimitedList(
             DelimitedList\ExpressionList::class,
             TokenKind::CommaToken,
-            function ($token) {
+            function (Token $token) {
                 return $token->kind === TokenKind::VariableName;
             },
             $this->parsePropertyVariableNameAndDefault(),
