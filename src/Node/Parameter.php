@@ -15,6 +15,8 @@ class Parameter extends Node {
     public $attributes;
     /** @var Token|null */
     public $visibilityToken;
+    /** @var Token|null */
+    public $setVisibilityToken;
     /** @var Token[]|null */
     public $modifiers;
     /** @var Token|null */
@@ -37,6 +39,7 @@ class Parameter extends Node {
     const CHILD_NAMES = [
         'attributes',
         'visibilityToken',
+        'setVisibilityToken',
         'modifiers',
         'questionToken',
         'typeDeclarationList',
