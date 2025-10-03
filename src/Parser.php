@@ -643,7 +643,6 @@ class Parser {
             $modifiers = $this->parseModifiers();
 
             $token = $this->getCurrentToken();
-            //dump(Token::getTokenKindNameFromValue($token->kind));
 
             switch ($token->kind) {
                 case TokenKind::ConstKeyword:
@@ -854,7 +853,15 @@ class Parser {
             // Note that parameter modifiers are allowed to be repeated by the parser in php 8.1 (it is a compiler error)
             //
             // TODO: Remove the visibilityToken in a future backwards incompatible release
-            $parameter->visibilityToken = $this->eatOptional([TokenKind::PublicKeyword, TokenKind::ProtectedKeyword, TokenKind::PrivateKeyword]);
+            $parameter->visibilityToken = $this->eatOptional([
+                TokenKind::PublicKeyword,
+                TokenKind::ProtectedKeyword,
+                TokenKind::PrivateKeyword,
+            ]);
+            $parameter->setVisibilityToken = $this->eatOptional([
+                TokenKind::ProtectedSetKeyword,
+                TokenKind::PrivateSetKeyword,
+            ]);
             $parameter->modifiers = $this->parseParameterModifiers() ?: null;
 
             $parameter->questionToken = $this->eatOptional1(TokenKind::QuestionToken);
