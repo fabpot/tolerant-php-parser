@@ -643,6 +643,8 @@ class Parser {
             $modifiers = $this->parseModifiers();
 
             $token = $this->getCurrentToken();
+            //dump(Token::getTokenKindNameFromValue($token->kind));
+
             switch ($token->kind) {
                 case TokenKind::ConstKeyword:
                     return $this->parseClassConstDeclaration($parentNode, $modifiers);
