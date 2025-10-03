@@ -14,32 +14,11 @@
             {
                 "ExpressionStatement": {
                     "expression": {
-                        "SubscriptExpression": {
-                            "postfixExpression": {
-                                "Variable": {
-                                    "dollar": null,
-                                    "name": {
-                                        "kind": "VariableName",
-                                        "textLength": 2
-                                    }
-                                }
-                            },
-                            "openBracketOrBrace": {
-                                "kind": "OpenBraceToken",
-                                "textLength": 1
-                            },
-                            "accessExpression": {
-                                "NumericLiteral": {
-                                    "children": {
-                                        "kind": "IntegerLiteralToken",
-                                        "textLength": 1
-                                    }
-                                }
-                            },
-                            "closeBracketOrBrace": {
-                                "error": "MissingToken",
-                                "kind": "CloseBraceToken",
-                                "textLength": 0
+                        "Variable": {
+                            "dollar": null,
+                            "name": {
+                                "kind": "VariableName",
+                                "textLength": 2
                             }
                         }
                     },
@@ -51,15 +30,47 @@
                 }
             },
             {
-                "error": "SkippedToken",
-                "kind": "CloseBracketToken",
-                "textLength": 1
-            },
-            {
-                "EmptyStatement": {
-                    "semicolon": {
-                        "kind": "SemicolonToken",
+                "CompoundStatementNode": {
+                    "openBrace": {
+                        "kind": "OpenBraceToken",
                         "textLength": 1
+                    },
+                    "statements": [
+                        {
+                            "ExpressionStatement": {
+                                "expression": {
+                                    "NumericLiteral": {
+                                        "children": {
+                                            "kind": "IntegerLiteralToken",
+                                            "textLength": 1
+                                        }
+                                    }
+                                },
+                                "semicolon": {
+                                    "error": "MissingToken",
+                                    "kind": "SemicolonToken",
+                                    "textLength": 0
+                                }
+                            }
+                        },
+                        {
+                            "error": "SkippedToken",
+                            "kind": "CloseBracketToken",
+                            "textLength": 1
+                        },
+                        {
+                            "EmptyStatement": {
+                                "semicolon": {
+                                    "kind": "SemicolonToken",
+                                    "textLength": 1
+                                }
+                            }
+                        }
+                    ],
+                    "closeBrace": {
+                        "error": "MissingToken",
+                        "kind": "CloseBraceToken",
+                        "textLength": 0
                     }
                 }
             }
