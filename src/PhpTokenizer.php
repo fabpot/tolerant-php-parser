@@ -225,14 +225,31 @@ class PhpTokenizer implements TokenStreamProviderInterface {
     protected static function tokenGetAll(string $content, $parseContext): array
     {
         $tokens = @\token_get_all($content);
-        if (1 !== \count($tokens) || !\is_array($tokens[0]) || \T_INLINE_HTML !== $tokens[0][0] || !\str_starts_with($content, '<?')) {
-            return $tokens;
+        if (1 === \count($tokens) && \is_array($tokens[0]) && \T_INLINE_HTML === $tokens[0][0] && \str_starts_with($content, '<?')) {
+            $tokens = @\token_get_all('<?php '.\substr($content, 2));
+            \array_shift($tokens);
+            \array_unshift($tokens, [\T_OPEN_TAG, '<?', 1]);
         }
 
-        $shortTagTokens = @\token_get_all('<?php '.\substr($content, 2));
-        \array_shift($shortTagTokens);
+        for ($i = 0, $count = \count($tokens); $i < $count; ++$i) {
+            if (!\is_array($tokens[$i]) || \T_YIELD !== $tokens[$i][0]) {
+                continue;
+            }
 
-        return [[\T_OPEN_TAG, '<?', 1], ...$shortTagTokens];
+            $text = $tokens[$i][1];
+            for ($j = $i + 1; $j < $count && \is_array($tokens[$j]) && \in_array($tokens[$j][0], [\T_WHITESPACE, \T_COMMENT, \T_DOC_COMMENT], true); ++$j) {
+                $text .= $tokens[$j][1];
+            }
+            if ($j === $i + 1 || $j >= $count || !\is_array($tokens[$j]) || \T_STRING !== $tokens[$j][0] || 'from' !== \strtolower($tokens[$j][1])) {
+                continue;
+            }
+
+            $tokens[$i] = [\T_YIELD_FROM, $text.$tokens[$j][1], $tokens[$i][2]];
+            \array_splice($tokens, $i + 1, $j - $i);
+            $count -= $j - $i;
+        }
+
+        return $tokens;
     }
 
     const TOKEN_MAP = [
