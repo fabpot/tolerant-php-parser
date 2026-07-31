@@ -859,6 +859,7 @@ class Parser {
                 TokenKind::PrivateKeyword,
             ]);
             $parameter->setVisibilityToken = $this->eatOptional([
+                TokenKind::PublicSetKeyword,
                 TokenKind::ProtectedSetKeyword,
                 TokenKind::PrivateSetKeyword,
             ]);
@@ -1069,6 +1070,9 @@ class Parser {
             case TokenKind::PublicKeyword:
             case TokenKind::ProtectedKeyword:
             case TokenKind::PrivateKeyword:
+            case TokenKind::PublicSetKeyword:
+            case TokenKind::ProtectedSetKeyword:
+            case TokenKind::PrivateSetKeyword:
 
             // static-modifier
             case TokenKind::StaticKeyword:
@@ -1574,6 +1578,9 @@ class Parser {
             case TokenKind::PublicKeyword:
             case TokenKind::ProtectedKeyword:
             case TokenKind::PrivateKeyword:
+            case TokenKind::PublicSetKeyword:
+            case TokenKind::ProtectedSetKeyword:
+            case TokenKind::PrivateSetKeyword:
 
             // static-modifier
             case TokenKind::StaticKeyword:

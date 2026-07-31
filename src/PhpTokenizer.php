@@ -19,6 +19,9 @@ define(__NAMESPACE__ . '\T_ENUM', defined('T_ENUM') ? constant('T_ENUM') : 'T_EN
 define(__NAMESPACE__ . '\T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG', defined('T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG') ? constant('T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG') : 'T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG');
 define(__NAMESPACE__ . '\T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG', defined('T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG') ? constant('T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG') : 'T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG');
 define(__NAMESPACE__ . '\T_READONLY', defined('T_READONLY') ? constant('T_READONLY') : 'T_READONLY');
+define(__NAMESPACE__ . '\T_PRIVATE_SET', defined('T_PRIVATE_SET') ? constant('T_PRIVATE_SET') : 'T_PRIVATE_SET');
+define(__NAMESPACE__ . '\T_PROTECTED_SET', defined('T_PROTECTED_SET') ? constant('T_PROTECTED_SET') : 'T_PROTECTED_SET');
+define(__NAMESPACE__ . '\T_PUBLIC_SET', defined('T_PUBLIC_SET') ? constant('T_PUBLIC_SET') : 'T_PUBLIC_SET');
 define(__NAMESPACE__ . '\T_PIPE', defined('T_PIPE') ? constant('T_PIPE') : 'T_PIPE');
 
 /**
@@ -298,8 +301,9 @@ class PhpTokenizer implements TokenStreamProviderInterface {
         T_LOGICAL_OR => TokenKind::OrKeyword,
         T_PRINT => TokenKind::PrintKeyword,
         T_PRIVATE => TokenKind::PrivateKeyword,
-        327 => TokenKind::PrivateSetKeyword, // T_PRIVATE_SET 
-        328 => TokenKind::ProtectedSetKeyword, // T_PROTECTED_SET
+        namespace\T_PRIVATE_SET => TokenKind::PrivateSetKeyword,
+        namespace\T_PROTECTED_SET => TokenKind::ProtectedSetKeyword,
+        namespace\T_PUBLIC_SET => TokenKind::PublicSetKeyword,
         T_PROTECTED => TokenKind::ProtectedKeyword,
         T_PUBLIC => TokenKind::PublicKeyword,
         T_READONLY => TokenKind::ReadonlyKeyword,

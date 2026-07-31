@@ -34,6 +34,98 @@
                             },
                             "classMemberDeclarations": [
                                 {
+                                    "PropertyDeclaration": {
+                                        "attributes": null,
+                                        "modifiers": [
+                                            {
+                                                "kind": "PublicKeyword",
+                                                "textLength": 6
+                                            },
+                                            {
+                                                "kind": "PrivateSetKeyword",
+                                                "textLength": 12
+                                            }
+                                        ],
+                                        "questionToken": null,
+                                        "typeDeclarationList": {
+                                            "QualifiedNameList": {
+                                                "children": [
+                                                    {
+                                                        "kind": "StringReservedWord",
+                                                        "textLength": 6
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "propertyElements": {
+                                            "ExpressionList": {
+                                                "children": [
+                                                    {
+                                                        "Variable": {
+                                                            "dollar": null,
+                                                            "name": {
+                                                                "kind": "VariableName",
+                                                                "textLength": 5
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "propertyHooks": null,
+                                        "semicolon": {
+                                            "kind": "SemicolonToken",
+                                            "textLength": 1
+                                        }
+                                    }
+                                },
+                                {
+                                    "PropertyDeclaration": {
+                                        "attributes": null,
+                                        "modifiers": [
+                                            {
+                                                "kind": "ProtectedKeyword",
+                                                "textLength": 9
+                                            },
+                                            {
+                                                "kind": "PublicSetKeyword",
+                                                "textLength": 11
+                                            }
+                                        ],
+                                        "questionToken": null,
+                                        "typeDeclarationList": {
+                                            "QualifiedNameList": {
+                                                "children": [
+                                                    {
+                                                        "kind": "StringReservedWord",
+                                                        "textLength": 6
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "propertyElements": {
+                                            "ExpressionList": {
+                                                "children": [
+                                                    {
+                                                        "Variable": {
+                                                            "dollar": null,
+                                                            "name": {
+                                                                "kind": "VariableName",
+                                                                "textLength": 8
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "propertyHooks": null,
+                                        "semicolon": {
+                                            "kind": "SemicolonToken",
+                                            "textLength": 1
+                                        }
+                                    }
+                                },
+                                {
                                     "MethodDeclaration": {
                                         "attributes": null,
                                         "modifiers": [
@@ -124,6 +216,44 @@
                                                             "variableName": {
                                                                 "kind": "VariableName",
                                                                 "textLength": 7
+                                                            },
+                                                            "equalsToken": null,
+                                                            "default": null,
+                                                            "propertyHooks": null
+                                                        }
+                                                    },
+                                                    {
+                                                        "kind": "CommaToken",
+                                                        "textLength": 1
+                                                    },
+                                                    {
+                                                        "Parameter": {
+                                                            "attributes": null,
+                                                            "visibilityToken": {
+                                                                "kind": "PublicKeyword",
+                                                                "textLength": 6
+                                                            },
+                                                            "setVisibilityToken": {
+                                                                "kind": "PublicSetKeyword",
+                                                                "textLength": 11
+                                                            },
+                                                            "modifiers": null,
+                                                            "questionToken": null,
+                                                            "typeDeclarationList": {
+                                                                "QualifiedNameList": {
+                                                                    "children": [
+                                                                        {
+                                                                            "kind": "StringReservedWord",
+                                                                            "textLength": 6
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "byRefToken": null,
+                                                            "dotDotDotToken": null,
+                                                            "variableName": {
+                                                                "kind": "VariableName",
+                                                                "textLength": 17
                                                             },
                                                             "equalsToken": null,
                                                             "default": null,
