@@ -3471,7 +3471,7 @@ class Parser {
 
     /**
      * @param PropertyDeclaration $parentNode
-     * @return DelimitedList\VariableNameList
+     * @return DelimitedList\ExpressionList|null
      */
     private function parsePropertyNameList($parentNode) {
         // XXX this used to be implemented with parseExpressionList so keep the same classes.
@@ -3528,12 +3528,6 @@ class Parser {
         TokenKind::AmpersandToken, // by reference
         TokenKind::AttributeToken,
     ];
-
-    private function isPropertyHookStart() {
-        return function ($token) {
-            return \in_array($token->kind, self::PROPERTY_HOOK_START_TOKENS, true);
-        };
-    }
 
     /**
      * @param PropertyHooks $parentNode

@@ -26,7 +26,7 @@ class PropertyDeclaration extends Node implements ModifiedTypeInterface {
     /** @var QualifiedNameList|MissingToken|null */
     public $typeDeclarationList;
 
-    /** @var DelimitedList\ExpressionList */
+    /** @var DelimitedList\ExpressionList|null */
     public $propertyElements;
 
     /** @var PropertyHooks|null */

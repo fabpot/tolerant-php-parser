@@ -7,7 +7,6 @@
 namespace Microsoft\PhpParser\Node;
 
 use Microsoft\PhpParser\Node;
-use Microsoft\PhpParser\Node\PropertyHooks;
 use Microsoft\PhpParser\Token;
 
 class PropertyHooks extends Node {
