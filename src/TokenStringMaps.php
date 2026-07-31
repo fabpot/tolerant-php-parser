@@ -145,6 +145,7 @@ class TokenStringMaps {
         "!==" => TokenKind::ExclamationEqualsEqualsToken,
         "^" => TokenKind::CaretToken,
         "|" => TokenKind::BarToken,
+        "|>" => TokenKind::PipeToken,
         "&" => TokenKind::AmpersandToken,
         "&&" => TokenKind::AmpersandAmpersandToken,
         "||" => TokenKind::BarBarToken,

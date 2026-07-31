@@ -2349,25 +2349,28 @@ class Parser {
             TokenKind::LessThanEqualsToken => [18, Associativity::None],
             TokenKind::GreaterThanEqualsToken => [18, Associativity::None],
 
+            TokenKind::PipeToken => [19, Associativity::Left],
+
+            TokenKind::DotToken => [20, Associativity::Left],
+
             // shift-expression (L)
-            TokenKind::LessThanLessThanToken => [19, Associativity::Left],
-            TokenKind::GreaterThanGreaterThanToken => [19, Associativity::Left],
+            TokenKind::LessThanLessThanToken => [21, Associativity::Left],
+            TokenKind::GreaterThanGreaterThanToken => [21, Associativity::Left],
 
             // additive-expression (L)
-            TokenKind::PlusToken => [20, Associativity::Left],
-            TokenKind::MinusToken => [20, Associativity::Left],
-            TokenKind::DotToken =>[20, Associativity::Left],
+            TokenKind::PlusToken => [22, Associativity::Left],
+            TokenKind::MinusToken => [22, Associativity::Left],
 
             // multiplicative-expression (L)
-            TokenKind::AsteriskToken => [21, Associativity::Left],
-            TokenKind::SlashToken => [21, Associativity::Left],
-            TokenKind::PercentToken => [21, Associativity::Left],
+            TokenKind::AsteriskToken => [23, Associativity::Left],
+            TokenKind::SlashToken => [23, Associativity::Left],
+            TokenKind::PercentToken => [23, Associativity::Left],
 
             // instanceof-expression (X)
-            TokenKind::InstanceOfKeyword => [22, Associativity::None],
+            TokenKind::InstanceOfKeyword => [24, Associativity::None],
 
             // exponentiation-expression (R)
-            TokenKind::AsteriskAsteriskToken => [23, Associativity::Right]
+            TokenKind::AsteriskAsteriskToken => [25, Associativity::Right]
         ];
 
     const UNKNOWN_PRECEDENCE_AND_ASSOCIATIVITY = [-1, -1];

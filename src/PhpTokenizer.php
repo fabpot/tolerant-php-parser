@@ -19,6 +19,7 @@ define(__NAMESPACE__ . '\T_ENUM', defined('T_ENUM') ? constant('T_ENUM') : 'T_EN
 define(__NAMESPACE__ . '\T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG', defined('T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG') ? constant('T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG') : 'T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG');
 define(__NAMESPACE__ . '\T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG', defined('T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG') ? constant('T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG') : 'T_AMPERSAND_FOLLOWED_BY_VAR_OR_VARARG');
 define(__NAMESPACE__ . '\T_READONLY', defined('T_READONLY') ? constant('T_READONLY') : 'T_READONLY');
+define(__NAMESPACE__ . '\T_PIPE', defined('T_PIPE') ? constant('T_PIPE') : 'T_PIPE');
 
 /**
  * Tokenizes content using PHP's built-in `token_get_all`, and converts to "lightweight" Token representation.
@@ -220,7 +221,15 @@ class PhpTokenizer implements TokenStreamProviderInterface {
      */
     protected static function tokenGetAll(string $content, $parseContext): array
     {
-        return @\token_get_all($content);
+        $tokens = @\token_get_all($content);
+        if (1 !== \count($tokens) || !\is_array($tokens[0]) || \T_INLINE_HTML !== $tokens[0][0] || !\str_starts_with($content, '<?')) {
+            return $tokens;
+        }
+
+        $shortTagTokens = @\token_get_all('<?php '.\substr($content, 2));
+        \array_shift($shortTagTokens);
+
+        return [[\T_OPEN_TAG, '<?', 1], ...$shortTagTokens];
     }
 
     const TOKEN_MAP = [
@@ -323,6 +332,7 @@ class PhpTokenizer implements TokenStreamProviderInterface {
         T_INC => TokenKind::PlusPlusToken,
         T_DEC => TokenKind::MinusMinusToken,
         T_POW => TokenKind::AsteriskAsteriskToken,
+        namespace\T_PIPE => TokenKind::PipeToken,
         "*" => TokenKind::AsteriskToken,
         "+" => TokenKind::PlusToken,
         "-" => TokenKind::MinusToken,
