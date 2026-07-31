@@ -11,7 +11,7 @@ use Microsoft\PhpParser\Token;
 use Microsoft\PhpParser\TokenKind;
 
 abstract class DelimitedList extends Node {
-    /** @var Token[]|Node[] */
+    /** @var array<Token|Node> */
     public $children;
 
     const CHILD_NAMES = [
@@ -24,7 +24,7 @@ abstract class DelimitedList extends Node {
         foreach ($this->children as $child) {
             if ($child instanceof Node) {
                 yield $child;
-            } elseif ($child instanceof Token && !\in_array($child->kind, self::DELIMITERS)) {
+            } elseif (!\in_array($child->kind, self::DELIMITERS)) {
                 yield $child;
             }
         }

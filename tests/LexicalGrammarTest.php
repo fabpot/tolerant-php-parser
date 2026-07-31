@@ -36,7 +36,7 @@ class LexicalGrammarTest extends TestCase {
         $this->assertEquals($expectedTokens, $tokens, "input: $testCaseFile\r\nexpected: $expectedTokensFile");
     }
 
-    public function lexicalProvider() {
+    public static function lexicalProvider() {
         $testCases = glob(__dir__ . "/cases/lexical/*.php");
 
         $skipped = json_decode(file_get_contents(__DIR__ . "/skipped.json"));
@@ -71,7 +71,7 @@ class LexicalGrammarTest extends TestCase {
 //        $this->assertEquals($expectedTokens, $tokens, "input: $testCaseFile\r\nexpected: $expectedTokensFile");
     }
 
-    public function lexicalSpecProvider() {
+    public static function lexicalSpecProvider() {
         $testCases = glob(__dir__ . "/cases/php-langspec/**/*.php");
 
         $testProviderArray = [];

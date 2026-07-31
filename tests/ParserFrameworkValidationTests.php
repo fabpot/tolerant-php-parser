@@ -8,7 +8,7 @@ use Microsoft\PhpParser\Token;
 use PHPUnit\Framework\TestCase;
 
 class ParserFrameworkValidationTests extends TestCase {
-    public function frameworkErrorProvider() {
+    public static function frameworkErrorProvider() {
         $totalSize = 0;
         $frameworks = glob(__DIR__ . "/../validation/frameworks/*", GLOB_ONLYDIR);
 

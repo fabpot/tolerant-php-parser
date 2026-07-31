@@ -1,15 +1,16 @@
 # Tolerant PHP Parser
-[![CI](https://github.com/microsoft/tolerant-php-parser/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/microsoft/tolerant-php-parser/actions/workflows/main.yml)
+[![CI](https://github.com/fabpot/tolerant-php-parser/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/fabpot/tolerant-php-parser/actions/workflows/main.yml)
 
-This is an early-stage PHP parser designed, from the beginning, for IDE usage scenarios (see [Design Goals](#design-goals) for more details). There is
-still a ton of work to be done, so at this point, this repo mostly serves as
-an experiment and the start of a conversation.
+This is a tolerant PHP parser designed for IDE usage scenarios (see [Design Goals](#design-goals) for more details). It is maintained as a fork of [microsoft/tolerant-php-parser](https://github.com/microsoft/tolerant-php-parser). The original `Microsoft\\PhpParser` namespace is retained for compatibility.
 
 ![image](https://cloud.githubusercontent.com/assets/762848/19023070/4ab01c92-889a-11e6-9bb5-ec1a6816aba2.png)
 
-This is the v0.1 branch, which changes data structures to support syntax added after the initial 0.0.x release line.
-
 ## Get Started
+
+```console
+composer require fabpot/tolerant-php-parser
+```
+
 After you've [configured your machine](docs/GettingStarted.md), you can use the parser to generate and work
 with the Abstract Syntax Tree (AST) via a friendly API.
 ```php
@@ -72,8 +73,7 @@ parser should still be able to recover and produce a valid + complete tree, as w
  to leave room for other features).
   * Memory-efficient data structures
   * Allow for incremental parsing in the future
-* Adheres to [PHP language spec](https://github.com/php/php-langspec),
-supports both PHP5 and PHP7 grammars
+* Adheres to the PHP grammar and supports modern PHP syntax
 * Generated AST provides properties (fully representative, etc.) necessary for semantic and transformational
 operations, which also need to be performant.
   * Fully representative and round-trippable back to the text it was parsed from (all whitespace and comment "trivia" are included in the parse tree)
@@ -108,7 +108,7 @@ A few of the PHP grammatical constructs (namely yield-expression, and template s
 are not yet supported and there are also other miscellaneous bugs. However, because the parser is error-tolerant,
 these errors are handled gracefully, and the resulting tree is otherwise complete. To get a more holistic sense for
 where we are, you can run the "validation" test suite (see [Contributing Guidelines](Contributing.md) for more info
-on running tests). Or simply, take a look at the current [validation test results](https://travis-ci.org/Microsoft/tolerant-php-parser).
+on running tests).
 
 Even though we haven't yet begun the performance optimization stage, we have seen promising results so far,
 and have plenty more room for improvement. See [How It Works](docs/HowItWorks.md) for details on our current

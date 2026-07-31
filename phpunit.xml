@@ -1,6 +1,5 @@
-<phpunit bootstrap="src/bootstrap.php"
-	beStrictAboutTestsThatDoNotTestAnything="false"
-	>
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="src/bootstrap.php" beStrictAboutTestsThatDoNotTestAnything="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" cacheDirectory=".phpunit.cache">
   <testsuites>
     <testsuite name="invariants">
       <!--
@@ -11,7 +10,6 @@
       <file>tests/LexerInvariantsTest.php</file>
       <file>tests/ParserInvariantsTest.php</file>
     </testsuite>
-
     <testsuite name="grammar">
       <!--
       Tests that we are properly implementing the grammar.
@@ -21,7 +19,6 @@
       <file>tests/LexicalGrammarTest.php</file>
       <file>tests/ParserGrammarTest.php</file>
     </testsuite>
-
     <testsuite name="validation">
       <!--
       Validates against real-world scenarios.
@@ -30,7 +27,6 @@
       -->
       <file>tests/ParserFrameworkValidationTests.php</file>
     </testsuite>
-
     <testsuite name="api">
       <file>tests/api/NodeApiTest.php</file>
       <file>tests/api/GetNodeAtPositionTest.php</file>
@@ -38,21 +34,10 @@
       <file>tests/api/PositionUtilitiesTest.php</file>
       <file>tests/api/TextEditTest.php</file>
     </testsuite>
-
     <testsuite name="performance">
       <!-- TODO: Validates that there are no performance regressions. -->
     </testsuite>
   </testsuites>
-
-  <filter>
-    <!-- Code coverage whitelist. -->
-    <whitelist processUncoveredFilesFromWhitelist="true">
-      <directory suffix=".php">/src/Node</directory>
-      <file>/src/Parser.php</file>
-      <file>/src/PhpTokenizer.php</file>
-    </whitelist>
-  </filter>
-
   <php>
     <!--
     TODO: see if we can remove this in the future. It may be indicative of not passing things
@@ -62,4 +47,11 @@
     <ini name="memory_limit" value="500M"/>
     <ini name="assert.exception" value="1"/>
   </php>
+  <source>
+    <include>
+      <directory suffix=".php">/src/Node</directory>
+      <file>/src/Parser.php</file>
+      <file>/src/PhpTokenizer.php</file>
+    </include>
+  </source>
 </phpunit>

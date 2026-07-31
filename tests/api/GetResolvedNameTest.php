@@ -69,7 +69,7 @@ class GetResolvedNameTest extends TestCase {
         'use A\BarTrait; class Foo { use _BarTrait; }' => 'A\BarTrait',
     );
 
-    public function dataProvider() {
+    public static function dataProvider() {
         $result = [];
         foreach (GetResolvedNameTest::testData as $contents => $expectedName) {
             $contents = '<?php' . PHP_EOL . $contents;

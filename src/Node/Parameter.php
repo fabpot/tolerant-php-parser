@@ -56,10 +56,7 @@ class Parameter extends Node {
     }
 
     public function getName() {
-        if (
-            $this->variableName instanceof Token &&
-            $name = substr($this->variableName->getText($this->getFileContents()), 1)
-        ) {
+        if ($name = substr($this->variableName->getText($this->getFileContents()), 1)) {
             return $name;
         }
         return null;

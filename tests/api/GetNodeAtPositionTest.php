@@ -58,8 +58,8 @@ PHP
         => '$a->'
     );
 
-    public function textDataProvider() {
-        return $this->getDataProvider(GetNodeAtPositionTest::textTestData);
+    public static function textDataProvider() {
+        return self::getDataProvider(GetNodeAtPositionTest::textTestData);
     }
 
     /**
@@ -98,8 +98,8 @@ PHP
         => \Microsoft\PhpParser\Node\Statement\FunctionDeclaration::class
     );
 
-    public function classDataProvider() {
-        return $this->getDataProvider(GetNodeAtPositionTest::classTestData);
+    public static function classDataProvider() {
+        return self::getDataProvider(GetNodeAtPositionTest::classTestData);
     }
 
     /**
@@ -136,7 +136,7 @@ PHP
         $this->assertEquals($expectedText, $text, $message);
     }
 
-    private function getDataProvider(array $testData) {
+    private static function getDataProvider(array $testData) {
         $result = array();
         foreach ($testData as $testCode => $expectedText) {
             $result[$testCode] = [$testCode, $expectedText];

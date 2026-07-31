@@ -138,8 +138,8 @@ class PhpTokenizer implements TokenStreamProviderInterface {
                     $arr[] = new Token(TokenKind::ScriptSectionStartTag, $fullStart, $start, $pos-$fullStart);
                     $start = $fullStart = $pos;
                     break;
-                case \PHP_VERSION_ID >= 80000 ? \T_NAME_QUALIFIED : -1000:
-                case \PHP_VERSION_ID >= 80000 ? \T_NAME_FULLY_QUALIFIED : -1001:
+                case \T_NAME_QUALIFIED:
+                case \T_NAME_FULLY_QUALIFIED:
                     // NOTE: This switch is called on every token of every file being parsed, so this traded performance for readability.
                     //
                     // PHP's Opcache is able to optimize switches that are exclusively known longs,
@@ -169,7 +169,7 @@ class PhpTokenizer implements TokenStreamProviderInterface {
                         $fullStart = $start;
                     }
                     break;
-                case \PHP_VERSION_ID >= 80000 ? \T_NAME_RELATIVE : -1002:
+                case \T_NAME_RELATIVE:
                     // This is a namespace-relative name: namespace\...
                     foreach (\explode('\\', $token[1]) as $i => $name) {
                         $len = \strlen($name);

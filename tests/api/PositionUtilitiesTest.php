@@ -19,7 +19,7 @@ there
 awesome
 PHP;
 
-    public function getRangeFromPositionDataProvider(): array {
+    public static function getRangeFromPositionDataProvider(): array {
         return [
             // Empty range at start
             [0, 0, new Range(new LineCharacterPosition(0, 0), new LineCharacterPosition(0, 0))],
@@ -44,7 +44,7 @@ PHP;
             PositionUtilities::getRangeFromPosition($position, $length, PositionUtilitiesTest::text));
     }
 
-    public function getLineCharacterPositionFromPositionDataProvider(): array {
+    public static function getLineCharacterPositionFromPositionDataProvider(): array {
         return [
             [0, new LineCharacterPosition(0, 0)],
             [6, new LineCharacterPosition(1, 0)],

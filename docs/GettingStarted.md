@@ -1,58 +1,21 @@
 # Getting Started
 
-## Set up your PHP Environment (PHP 7.2 and Composer)
-Any version of PHP 7 should work, but as we are still in our early
-stages, the "golden path" for now will be PHP 7.2
+## Requirements
 
-### Windows
-1. Download [PHP 7.2](http://windows.php.net/download#php-7.2)
-2. Download and install [Composer](https://getcomposer.org/download/)
+Install PHP 8.1 or later and [Composer](https://getcomposer.org/download/). Verify both are available:
 
-Ensure your version of PHP is properly configured by running `php -v` in the command prompt.
-If it's not PHP 7.2, then you have a few different options for how to access it:
-1. reference it directly: `c:\PHP7.2\php.exe -v`
-2. Prepend the directory to your system `PATH`
-3. create an alias using `doskey`: `doskey php7="C:\PHP7.2\php.exe" $*`
-
-### Mac
-1. Install [Homebrew](http://brew.sh/)
-2. Install PHP 7.2 and Composer
-```
-brew install php@7.2
-brew install composer
+```console
+php -v
+composer --version
 ```
 
-Ensure your version of PHP is properly configured by running `php -v`.
-If it's not PHP7, then you have a few different options for how to access it:
-1. reference it directly: `/usr/local/Cellar/php@7.2/7.2.30/bin/php -v`
-2. alias it in your `~/.bash_profile`: `alias php7=/usr/local/Cellar/php@7.2/7.2.30/bin/php`
-3. add it to your PATH in `~/.bash_profile`: `export PATH="/usr/local/sbin:$PATH"`
+## Install `tolerant-php-parser`
 
-## Reference `tolerant-php-parser` from your PHP project
-The parser is not yet available on packagist, so you'll instead 
-have to specify the location to the github repository.
+Run this command in your PHP project:
 
-In your project's `composer.json`, specify the `minimum-stability`, 
-`repositories`, and `require` attributes as follows:
-```json
-{
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/microsoft/tolerant-php-parser.git"
-        }
-    ],
-    "require": {
-        "microsoft/tolerant-php-parser": "master"
-    }
-}
+```console
+composer require fabpot/tolerant-php-parser
 ```
-
-Once you've referenced the parser from your project, run `composer install --prefer-dist`,
-and be on your way!
-> Note: The `--prefer-dist` flag tells Composer to download the minimal set of files,
-rather the complete source, which includes tests as well.
 
 ## Ready, set, parse!
 

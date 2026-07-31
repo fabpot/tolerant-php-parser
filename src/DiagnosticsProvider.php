@@ -37,10 +37,8 @@ class DiagnosticsProvider {
 
     /**
      * Returns the diagnostic for $node, or null.
-     * @param \Microsoft\PhpParser\Node|\Microsoft\PhpParser\Token $node
-     * @return Diagnostic|null
      */
-    public static function checkDiagnostics($node) {
+    public static function checkDiagnostics(Node|Token $node): ?Diagnostic {
         if ($node instanceof Token) {
             if (\get_class($node) === Token::class) {
                 return null;
@@ -48,12 +46,7 @@ class DiagnosticsProvider {
             return self::checkDiagnosticForUnexpectedToken($node);
         }
 
-        if ($node instanceof Node) {
-            return $node->getDiagnosticForNode();
-        }
-
-        /** @phpstan-ignore-next-line because it says "unreachable" statement */
-        return null;
+        return $node->getDiagnosticForNode();
     }
 
     /**

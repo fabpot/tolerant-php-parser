@@ -74,7 +74,7 @@ class ParserGrammarTest extends TestCase {
         [80500, self::PHP85_FILE_PATTERN],
     ];
 
-    public function treeProvider() {
+    public static function treeProvider() {
         $testCases = glob(self::FILE_PATTERN . ".php");
         $skipped = json_decode(file_get_contents(__DIR__ . "/skipped.json"));
 
@@ -112,7 +112,7 @@ class ParserGrammarTest extends TestCase {
         $this->assertSame([], DiagnosticsProvider::getDiagnostics($sourceFile));
     }
 
-    public function outTreeProvider() {
+    public static function outTreeProvider() {
         $testCases = glob(__DIR__ . "/cases/php-langspec/**/*.php");
         $skipped = json_decode(file_get_contents(__DIR__ . "/skipped.json"));
 
