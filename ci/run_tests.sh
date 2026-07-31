@@ -7,4 +7,4 @@ set -xe
 php -d short_open_tag=0 ./vendor/bin/phpunit --testsuite invariants
 php -d short_open_tag=0 ./vendor/bin/phpunit --testsuite grammar
 php -d short_open_tag=0 ./vendor/bin/phpunit --testsuite api
-php ./vendor/bin/phpstan analyse --no-progress
+php ./vendor/bin/phpstan analyse --no-progress --memory-limit=500M
