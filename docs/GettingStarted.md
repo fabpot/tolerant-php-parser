@@ -11,10 +11,11 @@ composer --version
 
 ## Install `tolerant-php-parser`
 
-Run this command in your PHP project:
+Add the VCS repository and install the package:
 
 ```console
-composer require fabpot/tolerant-php-parser
+composer config repositories.tolerant-php-parser vcs https://github.com/fabpot/tolerant-php-parser
+composer require fabpot/tolerant-php-parser:^0.2
 ```
 
 ## Ready, set, parse!

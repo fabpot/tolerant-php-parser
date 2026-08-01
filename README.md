@@ -7,8 +7,23 @@ This is a tolerant PHP parser designed for IDE usage scenarios (see [Design Goal
 
 ## Get Started
 
+Add the fork as a VCS repository in your `composer.json`:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/fabpot/tolerant-php-parser"
+        }
+    ]
+}
+```
+
+Then install it:
+
 ```console
-composer require fabpot/tolerant-php-parser
+composer require fabpot/tolerant-php-parser:^0.2
 ```
 
 After you've [configured your machine](docs/GettingStarted.md), you can use the parser to generate and work
